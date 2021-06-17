@@ -20,15 +20,14 @@ public class Api {
 
     private String url_string;
 
-    public static Map<String, Object> jsonToMap(String str) {
-        Map<String, Object> map = new Gson().fromJson(
-                str, new TypeToken<HashMap<String, Object>>() {
-                }.getType()
+    public static Map<String, Object> jsonToMap (String str) {
+        Map<String, Object> map = new Gson().fromJson (
+                str, new TypeToken<HashMap<String, Object>>() {}.getType()
         );
         return map;
     }
 
-    public Api(String a) throws IOException {
+    public Api(String a) {
         String API_KEY = a;
         url_string = "https://restapi100.herokuapp.com/studyGuide";
 
@@ -44,13 +43,10 @@ public class Api {
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = rd.readLine()) != null) {
-                result.append(line);
+                result .append(line);
             }
             rd.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-    }
 }
